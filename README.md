@@ -1,61 +1,80 @@
-🚀 Server Monitoring System
-Monitor, Visualize, and Analyze Your Server's Performance in Real-Time
+# **🚀 Server Monitoring System**
 
+### **Monitor, Visualize, and Analyze Your Server's Performance in Real-Time**
 
-🔍 Overview
-The Server Monitoring System is an all-encompassing tool designed to keep track of your server's key performance indicators (KPIs). It offers real-time visualization, alert notifications, and comprehensive data analysis to help administrators make informed decisions.
+![Server Monitoring](https://github.com/khm0930/server_monitoring_system/blob/main/assets/server_monitoring_system_screenshot.png)
 
-🎯 Features
-🖥️ Server Status Monitoring: Real-time tracking of CPU usage, memory consumption, disk usage, and more.
-📈 Live Data Visualization: Interactive dashboards showing real-time server performance data.
-⚠️ Alert System: Automatically triggers alerts when KPIs exceed defined thresholds.
-📊 Log Storage & Analysis: Stores server logs for historical analysis and trend discovery.
-💾 Time Series Database Integration: Efficiently stores time-series data for long-term monitoring.
-🛠️ Technology Stack
-🧑‍💻 Programming Language: Python
-💾 Database:
-InfluxDB: For time-series data storage.
-MySQL: For general-purpose data storage.
-🌐 Frontend:
-React: For building an intuitive and responsive user interface.
-🛠️ Backend:
-Django: Powers the API server.
-📡 Monitoring Tools:
-Prometheus: Handles data collection and storage.
-📊 Visualization Tools:
-Grafana: For advanced data visualization.
-🌍 Deployment & Infrastructure:
-Docker: Containerization for consistent development and deployment environments.
-AWS: Cloud-based infrastructure (including EC2, S3, etc.) for scalability and reliability.
-📷 Screenshots
-📊 Server Status Dashboard
+---
 
+## **🔍 Overview**
 
-📦 Installation
-Clone the Repository:
-bash
-코드 복사
-git clone https://github.com/khm0930/server_monitoring_system.git
-Navigate to the Project Directory:
-bash
-코드 복사
-cd server_monitoring_system
-Build and Start the Docker Containers:
-bash
-코드 복사
-docker-compose up --build
-Access the Monitoring Dashboard: Open your web browser and navigate to http://localhost:3000.
-🚨 Alerting System
-The system automatically sends alerts to the administrator when any server metric exceeds the defined threshold. These alerts are customizable and can be integrated with popular messaging platforms like Slack, email, etc.
+The **Server Monitoring System** is an all-encompassing tool designed to keep track of your server's key performance indicators (KPIs). It offers real-time visualization, alert notifications, and comprehensive data analysis to help administrators make informed decisions.
 
-📖 Documentation
-For detailed documentation, including API references, architecture diagrams, and deployment guides, visit the Wiki.
+---
 
-🛠️ Contributing
-We welcome contributions from the community! Please check out our Contributing Guide to get started.
+## **🎯 Features**
 
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **🖥️ Server Status Monitoring**: Real-time tracking of CPU usage, memory consumption, disk usage, and more.
+- **📈 Live Data Visualization**: Interactive dashboards showing real-time server performance data.
+- **⚠️ Alert System**: Automatically triggers alerts when KPIs exceed defined thresholds.
+- **📊 Log Storage & Analysis**: Stores server logs for historical analysis and trend discovery.
+- **💾 Time Series Database Integration**: Efficiently stores time-series data for long-term monitoring.
 
-🌟 Acknowledgements
-This project wouldn't have been possible without the amazing open-source tools and libraries used throughout its development. Special thanks to the communities behind React, Django, Prometheus, Grafana, and Docker.
+---
+
+## **🏗️ Project Architecture**
+
+The architecture of the Server Monitoring System is designed for scalability, modularity, and ease of deployment. Below is a high-level overview of the system components:
+
+![Project Architecture](https://github.com/khm0930/server_monitoring_system/blob/main/assets/project_architecture.png)
+
+- **Frontend**: 
+  - Built with React, the frontend communicates with the Django backend to fetch server status data and displays it in an interactive dashboard.
+- **Backend**:
+  - Django-based API server that processes requests from the frontend and interacts with the databases.
+  - Uses Prometheus for collecting metrics data and InfluxDB for storing time-series data.
+- **Database Layer**:
+  - **MySQL**: Stores general-purpose data, such as user information and configuration settings.
+  - **InfluxDB**: Optimized for handling high-volume time-series data, used for storing server metrics.
+- **Monitoring**:
+  - **Prometheus**: Collects and stores metrics, provides an API for the backend to query the data.
+  - **Grafana**: Integrated with Prometheus to create rich, customizable dashboards for data visualization.
+- **Infrastructure**:
+  - **Docker**: Containerizes the entire application stack for consistent and reliable deployment.
+  - **AWS**: Deployed on AWS infrastructure, taking advantage of EC2 for compute and S3 for storage.
+
+---
+
+## **🛠️ Technology Stack**
+
+- **🧑‍💻 Programming Language**: Python
+- **💾 Database**:
+  - **InfluxDB**: For time-series data storage.
+  - **MySQL**: For general-purpose data storage.
+- **🌐 Frontend**: 
+  - **React**: For building an intuitive and responsive user interface.
+- **🛠️ Backend**:
+  - **Django**: Powers the API server.
+- **📡 Monitoring Tools**:
+  - **Prometheus**: Handles data collection and storage.
+- **📊 Visualization Tools**:
+  - **Grafana**: For advanced data visualization.
+- **🌍 Deployment & Infrastructure**:
+  - **Docker**: Containerization for consistent development and deployment environments.
+  - **AWS**: Cloud-based infrastructure (including EC2, S3, etc.) for scalability and reliability.
+
+---
+
+## **📷 Screenshots**
+
+### **📊 Server Status Dashboard**
+
+![Server Status Dashboard](https://github.com/khm0930/server_monitoring_system/blob/main/assets/server_status_dashboard.png)
+
+---
+
+## **📦 Installation**
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/khm0930/server_monitoring_system.git
