@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7x5ty(-7*kcem_gd63)jm+w!0t$-l2i6phb%ekefo4#wqb8yt3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # Django REST Framework
+    'monitoring',  # 여기서 monitoring 앱을 INSTALLED_APPS에 추가
+    'django_prometheus',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +51,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True  # 임시로 모든 도메인에서의 요청을 허용
 
 ROOT_URLCONF = 'monitoring_system.urls'
 
@@ -75,10 +83,13 @@ WSGI_APPLICATION = 'monitoring_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'monitoring_db',
+        'USER': 'khm',
+        'PASSWORD': '0930',
+        'HOST': '220.69.203.87',  # Docker Compose에서 MySQL 서비스의 이름 (일반적으로 'db')
+        'PORT': '3307',
+    }}
 
 
 # Password validation
