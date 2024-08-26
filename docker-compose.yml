@@ -1,54 +1,57 @@
-version: '3'
+version: '3'  # Docker Compose 버전 지정
+
 services:
   backend:
-    build: ./backend
+    build: ./backend  # Django 백엔드 애플리케이션 빌드
     ports:
-      - "8000:8000"
+      - "8000:8000"  # 컨테이너의 포트 8000을 호스트의 포트 8000에 매핑
     volumes:
-      - ./backend:/app
+      - ./backend:/app  # 로컬 디렉토리를 컨테이너의 /app 디렉토리에 마운트
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE=monitoring_db
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
+      - DB_HOST=220.69.203.87  # 외부 MySQL 서버의 IP 주소 사용
+      - DB_NAME=monitoring_db
+      - DB_USER=khm
+      - DB_PASSWORD=0930
     depends_on:
-      - db
-      - influxdb
-      - prometheus
+#      - mysql  # MySQL 데이터베이스가 먼저 실행되어야 함
+      - influxdb  # InfluxDB가 먼저 실행되어야 함
+      - prometheus  # Prometheus가 먼저 실행되어야 함
 
   frontend:
-    build: ./frontend
+    build: ./frontend  # React 프론트엔드 애플리케이션 빌드
     ports:
-      - "3000:3000"
+      - "3000:3000"  # 컨테이너의 포트 3000을 호스트의 포트 3000에 매핑
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app  # 로컬 디렉토리를 컨테이너의 /app 디렉토리에 마운트
     depends_on:
-      - backend
+      - backend  # Django 백엔드가 먼저 실행되어야 함
 
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: monitoring_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    ports:
-      - "3306:3306"
+#  mysql:
+#   image: mysql:8.0  # MySQL 8.0 버전으로 업그레이드
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 1234 # MySQL 루트 비밀번호 설정
+#      MYSQL_DATABASE: monitoring_db  # 사용할 데이터베이스 이름 설정
+#      MYSQL_USER: khm  # 데이터베이스 사용자 이름 설정
+#      MYSQL_PASSWORD: 0930  # 데이터베이스 비밀번호 설정
+#    ports:
+#      - "3308:3307"  # 컨테이너의 포트 3306을 호스트의 포트 3306에 매핑
+#    volumes:
+#      - ./mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf  # 설정 파일 마운트
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:latest  # 최신 버전의 InfluxDB 사용
     ports:
-      - "8086:8086"
+      - "8086:8086"  # 컨테이너의 포트 8086을 호스트의 포트 8086에 매핑
     volumes:
       - influxdb-storage:/var/lib/influxdb
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus  # Prometheus 공식 이미지 사용
     ports:
-      - "9090:9090"
+      - "9090:9090"  # Prometheus 대시보드 접근을 위한 포트
     volumes:
-      - ./prometheus:/etc/prometheus
-
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  # 설정 파일 마운트
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
 volumes:
   influxdb-storage:
