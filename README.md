@@ -78,34 +78,19 @@ The architecture of the Server Monitoring System is designed for scalability, mo
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/khm0930/server_monitoring_system.git
-
 2. **Navigate to the Project Directory**:
    ```bash
    cd server_monitoring_system
-
-
 3. **Set Up the Backend Environment**:
    ```bash
     cd backend
     pip install -r requirements.txt
     python manage.py migrate
-
-
-
 4. **Set Up the Frontend Environment**:
    ```bash
    cd ../frontend
    npm install
-
-
-
 5. **Build and Start the Docker Containers**:
    ```bash
     cd ..
     docker-compose up --build
-
-
-
-
-
-
