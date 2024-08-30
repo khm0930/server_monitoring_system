@@ -85,10 +85,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'monitoring_db',
-        'USER': 'khm',
-        'PASSWORD': '0930',
-        'HOST': '220.69.203.87',  # Docker Compose에서 MySQL 서비스의 이름 (일반적으로 'db')
-        'PORT': '3307',
+        'USER': '@@@',
+        'PASSWORD': '@@@@',
+        'HOST': '@@@@',  # Docker Compose에서 MySQL 서비스의 이름 (일반적으로 'db')
+        'PORT': '@@@@',
     }}
 
 
