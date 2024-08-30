@@ -8,10 +8,10 @@ services:
     volumes:
       - ./backend:/app  # 로컬 디렉토리를 컨테이너의 /app 디렉토리에 마운트
     environment:
-      - DB_HOST=220.69.203.87  # 외부 MySQL 서버의 IP 주소 사용
+      - DB_HOST=@@@  # 외부 MySQL 서버의 IP 주소 사용
       - DB_NAME=monitoring_db
-      - DB_USER=khm
-      - DB_PASSWORD=0930
+      - DB_USER=@@@
+      - DB_PASSWORD=@@@
     depends_on:
 #      - mysql  # MySQL 데이터베이스가 먼저 실행되어야 함
       - influxdb  # InfluxDB가 먼저 실행되어야 함
@@ -29,10 +29,10 @@ services:
 #  mysql:
 #   image: mysql:8.0  # MySQL 8.0 버전으로 업그레이드
 #    environment:
-#      MYSQL_ROOT_PASSWORD: 1234 # MySQL 루트 비밀번호 설정
+#      MYSQL_ROOT_PASSWORD: @@@@ # MySQL 루트 비밀번호 설정
 #      MYSQL_DATABASE: monitoring_db  # 사용할 데이터베이스 이름 설정
-#      MYSQL_USER: khm  # 데이터베이스 사용자 이름 설정
-#      MYSQL_PASSWORD: 0930  # 데이터베이스 비밀번호 설정
+#      MYSQL_USER: @@@  # 데이터베이스 사용자 이름 설정
+#      MYSQL_PASSWORD: @@@@  # 데이터베이스 비밀번호 설정
 #    ports:
 #      - "3308:3307"  # 컨테이너의 포트 3306을 호스트의 포트 3306에 매핑
 #    volumes:
